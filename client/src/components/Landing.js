@@ -17,7 +17,7 @@ class Landing extends Component {
       default:
         return (
           <div style={{ textAlign: "center" }}>
-            <h3>Welcome back to Emaily!</h3>
+            <h3>Welcome back to E-Survey!</h3>
             <Link className="btn" to="/surveys">
               View Surveys
             </Link>
