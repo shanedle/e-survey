@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import M from "materialize-css";
 import Payments from "./Payments";
 
 class Header extends Component {
+  componentDidMount() {
+    let elems = document.querySelector(".sidenav");
+    M.Sidenav.init(elems, {
+      inDuration: 350,
+      outDuration: 350,
+      draggable: true,
+    });
+  }
+
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -40,7 +50,28 @@ class Header extends Component {
             E-Survey
           </Link>
 
-          <ul className="right">{this.renderContent()}</ul>
+          <div>
+            <ul
+              ref={(Sidenav) => {
+                this.Sidenav = Sidenav;
+              }}
+              id="slide-out"
+              className="sidenav mobile-nav"
+            >
+              <span data-target="slide-out" className="sidenav-close">
+                <i className="material-icons">close</i>
+              </span>
+              {this.renderContent()}
+            </ul>
+            <a
+              href="#!"
+              data-target="slide-out"
+              className="right sidenav-trigger"
+            >
+              <i className="material-icons">menu</i>
+            </a>
+          </div>
+          <ul className="right hide-on-med-and-down">{this.renderContent()}</ul>
         </div>
       </nav>
     );
