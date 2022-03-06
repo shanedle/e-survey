@@ -17,9 +17,13 @@ class SurveyList extends Component {
     if (this.props.surveys < 1) {
       return (
         <div style={{ textAlign: "center" }}>
-          <h3>No surveys yet!</h3>
-          <Link className="btn blue darken-4" to="/surveys/new">
-            Create Survey
+          <h5>
+            You haven't created any surveys yet. To get started, click the{" "}
+            <b>New Survey</b> button or the <b>+</b> button at the bottom right
+            of the page.
+          </h5>
+          <Link className="btn blue darken-1" to="/surveys/new">
+            New Survey
           </Link>
         </div>
       );

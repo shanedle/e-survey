@@ -23,7 +23,9 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a href="/auth/google">Login with Google</a>
+            <a href="/auth/google" className="black-text">
+              Login with Google
+            </a>
           </li>
         );
       default:
@@ -32,10 +34,12 @@ class Header extends Component {
             <Payments />
           </li>,
           <li key="2" style={{ margin: "0 10px" }}>
-            Credits: {this.props.auth.credits}
+            <div className="black-text">Credits: {this.props.auth.credits}</div>
           </li>,
           <li key="3">
-            <a href="/api/logout">Logout</a>
+            <a href="/api/logout" className="black-text">
+              Logout
+            </a>
           </li>,
         ];
     }
@@ -43,20 +47,18 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="blue darken-4" style={{ padding: "0 50px" }}>
+      <nav className="white" style={{ padding: "0 50px" }}>
         <div className="nav-wrapper">
           <Link
             to={this.props.auth ? "/surveys" : "/"}
-            className="left brand-logo"
+            className="left brand-logo black-text"
           >
             E-Survey
           </Link>
 
           <div>
-            <ul id="slide-out" className="sidenav mobile-nav blue darken-4">
-              <span data-target="slide-out" className="sidenav-close">
-                <i className="material-icons">close</i>
-              </span>
+            <ul id="slide-out" className="sidenav mobile-nav white black-text">
+              <span data-target="slide-out" className="sidenav-close"></span>
               {this.renderContent()}
             </ul>
             <a
@@ -64,7 +66,7 @@ class Header extends Component {
               data-target="slide-out"
               className="right sidenav-trigger"
             >
-              <i className="material-icons">menu</i>
+              <i className="material-icons black-text">menu</i>
             </a>
           </div>
           <ul className="right hide-on-med-and-down">{this.renderContent()}</ul>

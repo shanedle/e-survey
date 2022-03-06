@@ -10,25 +10,20 @@ class Landing extends Component {
       case false:
         return (
           <div style={{ textAlign: "center" }}>
-            <h1>E-Survey</h1>
-            Collect feedback from your users.
+            <h2>E-Survey</h2>
+            <h6>Collect feedback from your users</h6>
+            <a href="/auth/google" className="btn blue darken-1">
+              Get started
+            </a>
           </div>
         );
       default:
         return (
           <div style={{ textAlign: "center" }}>
             <h3>Welcome back to E-Survey!</h3>
-            <Link className="btn" to="/surveys">
+            <Link className="btn blue darken-1" to="/surveys">
               View Surveys
             </Link>
-            <div className="fixed-action-btn">
-              <Link
-                className="btn-floating btn-large waves-effect waves-light red"
-                to="/surveys/new"
-              >
-                <i className="material-icons">add</i>
-              </Link>
-            </div>
           </div>
         );
     }
