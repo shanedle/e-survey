@@ -11,7 +11,7 @@ const Dashboard = function () {
           className="btn-floating btn-large waves-effect waves-light red"
           to="/surveys/new"
         >
-          <i className="material-icons">add</i>
+          <i className="material-icons blue darken-4">add</i>
         </Link>
       </div>
     </div>

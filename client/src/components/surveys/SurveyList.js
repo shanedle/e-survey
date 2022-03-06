@@ -18,7 +18,7 @@ class SurveyList extends Component {
       return (
         <div style={{ textAlign: "center" }}>
           <h3>No surveys yet!</h3>
-          <Link className="btn" to="/surveys/new">
+          <Link className="btn blue darken-4" to="/surveys/new">
             Create Survey
           </Link>
         </div>

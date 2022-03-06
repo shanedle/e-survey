@@ -27,7 +27,7 @@ const SurveyFormReview = ({
       <h5>Please confirm your entries</h5>
       {reviewFields}
       <button
-        className="red btn-flat white-text"
+        className="red darken-4 btn-flat white-text"
         onClick={onSurveyEdit}
         style={{ marginTop: "30px" }}
       >
@@ -36,7 +36,7 @@ const SurveyFormReview = ({
       </button>
       <button
         onClick={() => submitSurvey(formValues, history)}
-        className="teal btn-flat right white-text"
+        className="blue darken-4 btn-flat right white-text"
         style={{ marginTop: "30px" }}
       >
         Send Survey

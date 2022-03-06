@@ -11,6 +11,8 @@ class Header extends Component {
       inDuration: 350,
       outDuration: 350,
       draggable: true,
+      preventScrolling: true,
+      edge: "right",
     });
   }
 
@@ -41,7 +43,7 @@ class Header extends Component {
 
   render() {
     return (
-      <nav style={{ padding: "0 50px" }}>
+      <nav className="blue darken-4" style={{ padding: "0 50px" }}>
         <div className="nav-wrapper">
           <Link
             to={this.props.auth ? "/surveys" : "/"}
@@ -51,13 +53,7 @@ class Header extends Component {
           </Link>
 
           <div>
-            <ul
-              ref={(Sidenav) => {
-                this.Sidenav = Sidenav;
-              }}
-              id="slide-out"
-              className="sidenav mobile-nav"
-            >
+            <ul id="slide-out" className="sidenav mobile-nav blue darken-4">
               <span data-target="slide-out" className="sidenav-close">
                 <i className="material-icons">close</i>
               </span>

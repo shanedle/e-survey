@@ -10,7 +10,7 @@ class Landing extends Component {
       case false:
         return (
           <div style={{ textAlign: "center" }}>
-            <h1>Emaily!</h1>
+            <h1>E-Survey</h1>
             Collect feedback from your users.
           </div>
         );

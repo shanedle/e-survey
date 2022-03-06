@@ -29,7 +29,7 @@ class SurveyForm extends Component {
           <Link
             to="/surveys"
             style={{ marginTop: "30px" }}
-            className="red btn-flat white-text left"
+            className="red darken-4 btn-flat white-text left"
           >
             Cancel
             <i className="material-icons right">clear</i>
@@ -37,7 +37,7 @@ class SurveyForm extends Component {
           <button
             type="submit"
             style={{ marginTop: "30px" }}
-            className="teal btn-flat right white-text"
+            className="blue darken-4 btn-flat right white-text"
           >
             Next
             <i className="material-icons right">arrow_forward</i>
