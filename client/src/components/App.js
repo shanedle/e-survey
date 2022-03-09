@@ -3,9 +3,12 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Header from "./Header";
+import Footer from "./Footer";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
+
+import "./App.css";
 
 class App extends Component {
   componentDidMount() {
@@ -14,18 +17,17 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <BrowserRouter>
-          <div>
-            <Header />
-            <div style={{ padding: "20px 50px" }}>
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/surveys" component={Dashboard} />
-              <Route path="/surveys/new" component={SurveyNew} />
-            </div>
-          </div>
+          <Header />
+          <main className="container">
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
+          </main>
+          <Footer />
         </BrowserRouter>
-      </div>
+      </>
     );
   }
 }

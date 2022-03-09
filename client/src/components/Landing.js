@@ -9,9 +9,11 @@ class Landing extends Component {
         return null;
       case false:
         return (
-          <div style={{ textAlign: "center" }}>
-            <h2>E-Survey</h2>
-            <h6>Collect feedback from your users</h6>
+          <div className="center">
+            <h4>A simple & powerful online survey tool.</h4>
+            <h5 className="light">
+              Sign up now to collect feedback from your users.
+            </h5>
             <a href="/auth/google" className="btn blue darken-1">
               Get started
             </a>
@@ -19,7 +21,7 @@ class Landing extends Component {
         );
       default:
         return (
-          <div style={{ textAlign: "center" }}>
+          <div className="center">
             <h3>Welcome back to E-Survey!</h3>
             <Link className="btn blue darken-1" to="/surveys">
               View Surveys
@@ -30,7 +32,17 @@ class Landing extends Component {
   }
 
   render() {
-    return <>{this.renderContent()}</>;
+    return (
+      <>
+        <div className="container">
+          <section className="section">
+            <div className="row">
+              <div>{this.renderContent()}</div>
+            </div>
+          </section>
+        </div>
+      </>
+    );
   }
 }
 
