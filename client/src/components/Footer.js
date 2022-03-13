@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="page-footer white">
       <div className="container black-text">
         <div className="row">
-          Made with{" "}
+          &copy; {new Date().getFullYear()}, Made with{" "}
           <span role="img" aria-label="heart">
             ❤️
           </span>{" "}
