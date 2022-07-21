@@ -1,6 +1,6 @@
 import { FETCH_SURVEYS, DELETE_SURVEY } from "../actions/types";
 
-export default function (state = null, action) {
+const surveysReducer = (state = null, action) => {
   switch (action.type) {
     case FETCH_SURVEYS:
       return action.payload;
@@ -11,4 +11,6 @@ export default function (state = null, action) {
     default:
       return state;
   }
-}
+};
+
+export default surveysReducer;

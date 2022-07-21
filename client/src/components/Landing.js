@@ -35,7 +35,7 @@ class Landing extends Component {
     return (
       <>
         <div className="container">
-          <section className="section">
+          <section className="section valign-wrapper">
             <div className="row">
               <div>{this.renderContent()}</div>
             </div>

@@ -21,7 +21,7 @@ mongoose.connect(
   },
   (err) => {
     if (err) throw err;
-    console.log("Connected to MongoDB!!!");
+    console.log("Connected to MongoDB!!");
   }
 );
 const app = express();
