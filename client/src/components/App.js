@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
+
 import * as actions from "../actions";
+
 import Header from "./Header";
 import Footer from "./Footer";
 import Landing from "./Landing";
@@ -10,26 +12,24 @@ import SurveyNew from "./surveys/SurveyNew";
 
 import "./App.css";
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
+const App = (props) => {
+  useEffect(() => {
+    props.fetchUser();
+  }, [props]);
 
-  render() {
-    return (
-      <>
-        <BrowserRouter>
-          <Header />
-          <main className="container">
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
-          </main>
-          <Footer />
-        </BrowserRouter>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <BrowserRouter>
+        <Header />
+        <main className="container">
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route path="/surveys/new" component={SurveyNew} />
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </>
+  );
+};
 
 export default connect(null, actions)(App);

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-class Landing extends Component {
-  renderContent() {
-    switch (this.props.auth) {
+const Landing = (props) => {
+  const renderContent = () => {
+    switch (props.auth) {
       case null:
         return null;
       case false:
@@ -29,25 +29,23 @@ class Landing extends Component {
           </div>
         );
     }
-  }
+  };
 
-  render() {
-    return (
-      <>
-        <div className="container">
-          <section className="section valign-wrapper">
-            <div className="row">
-              <div>{this.renderContent()}</div>
-            </div>
-          </section>
-        </div>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div className="container">
+        <section className="section valign-wrapper">
+          <div className="row">
+            <div>{renderContent()}</div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
 
-function mapStateToProps(state) {
-  return { auth: state.auth };
+function mapStateToProps({ auth }) {
+  return { auth };
 }
 
 export default connect(mapStateToProps)(Landing);
