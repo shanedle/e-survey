@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import M from "materialize-css";
+
 import Payments from "./Payments";
 
 const Header = (props) => {

@@ -1,20 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import { fetchSurveys, deleteSurvey } from "../../actions";
 
-class SurveyList extends Component {
-  componentDidMount() {
-    this.props.fetchSurveys();
-  }
+const SurveyList = ({ fetchSurveys, surveys, deleteSurvey }) => {
+  useEffect(() => {
+    fetchSurveys();
+  }, [fetchSurveys]);
 
-  deleteHandler(e, id) {
+  const deleteHandler = (e, id) => {
     e.preventDefault();
-    this.props.deleteSurvey(id);
-  }
+    deleteSurvey(id);
+  };
 
-  renderSurveys() {
-    if (this.props.surveys < 1) {
+  const renderSurveys = () => {
+    if (surveys < 1) {
       return (
         <div style={{ textAlign: "center" }}>
           <h5>
@@ -29,7 +30,7 @@ class SurveyList extends Component {
       );
     }
 
-    return this.props.surveys.map((survey) => {
+    return surveys.reverse().map((survey) => {
       return (
         <div className="card" key={survey._id}>
           <div className="card-content">
@@ -43,7 +44,7 @@ class SurveyList extends Component {
           <div className="card-action">
             <button
               className="right"
-              onClick={(e) => this.deleteHandler(e, survey._id)}
+              onClick={(e) => deleteHandler(e, survey._id)}
             >
               <i className="material-icons">delete</i>
             </button>
@@ -53,12 +54,10 @@ class SurveyList extends Component {
         </div>
       );
     });
-  }
+  };
 
-  render() {
-    return <div>{this.renderSurveys()}</div>;
-  }
-}
+  return <div>{renderSurveys()}</div>;
+};
 
 function mapStateToProps({ surveys }) {
   return { surveys: surveys };

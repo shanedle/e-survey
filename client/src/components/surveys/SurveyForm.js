@@ -1,13 +1,15 @@
 import _ from "lodash";
-import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
+import React from "react";
 import { Link } from "react-router-dom";
+import { reduxForm, Field } from "redux-form";
+
 import SurveyField from "./SurveyField";
-import validateEmails from "../../utils/validateEmails";
 import formFields from "./formFields";
 
-class SurveyForm extends Component {
-  renderFields() {
+import validateEmails from "../../utils/validateEmails";
+
+const SurveyForm = (props) => {
+  const renderFields = () => {
     return _.map(formFields, ({ label, name }) => {
       return (
         <Field
@@ -19,36 +21,34 @@ class SurveyForm extends Component {
         />
       );
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
-          {this.renderFields()}
-          <Link
-            to="/surveys"
-            style={{ marginTop: "30px" }}
-            className="red darken-4 btn-flat white-text left"
-          >
-            Cancel
-            <i className="material-icons right">clear</i>
-          </Link>
-          <button
-            type="submit"
-            style={{ marginTop: "30px" }}
-            className="blue darken-4 btn-flat right white-text"
-          >
-            Next
-            <i className="material-icons right">arrow_forward</i>
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <form onSubmit={props.handleSubmit(props.onSurveySubmit)}>
+        {renderFields()}
+        <Link
+          to="/surveys"
+          style={{ marginTop: "30px" }}
+          className="red darken-4 btn-flat white-text left"
+        >
+          Cancel
+          <i className="material-icons right">clear</i>
+        </Link>
+        <button
+          type="submit"
+          style={{ marginTop: "30px" }}
+          className="blue darken-4 btn-flat right white-text"
+        >
+          Next
+          <i className="material-icons right">arrow_forward</i>
+        </button>
+      </form>
+    </div>
+  );
+};
 
-function validate(values) {
+const validate = (values) => {
   const errors = {};
 
   errors.recipients = validateEmails(values.recipients || "");
@@ -66,7 +66,7 @@ function validate(values) {
   });
 
   return errors;
-}
+};
 
 export default reduxForm({
   validate: validate,
