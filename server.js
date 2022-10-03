@@ -1,28 +1,37 @@
-const dotenv = require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
-const cors = require("cors");
 const passport = require("passport");
+const path = require("path");
+
+const keys = require("./config/keys");
 
 require("./models/User");
 require("./models/Survey");
 require("./services/passport");
 
+mongoose.Promise = global.Promise;
+
+mongoose.connect(
+  keys.mongoURI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (err) throw err;
+    console.log("Connected to MongoDB!!");
+  }
+);
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: process.env.COOKIE_KEY,
-  })
-);
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://e-survey.onrender.com"],
-    credentials: true,
+    keys: [keys.cookieKey],
   })
 );
 
@@ -33,17 +42,13 @@ require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);
 
-app.get("/", (req, res) => {
-  res.send("Home Page");
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server Running on port ${PORT}`);
-    });
-  })
-  .catch((err) => console.log(err));
+app.listen(PORT);

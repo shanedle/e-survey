@@ -1,11 +1,13 @@
 const sendgrid = require("sendgrid");
 const helper = sendgrid.mail;
 
+const keys = require("../config/keys");
+
 class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
 
-    this.sgApi = sendgrid(process.env.SEND_GRID_KEY);
+    this.sgApi = sendgrid(keys.sendGridKey);
     this.from_email = new helper.Email("shane.anh.d.le@gmail.com");
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
